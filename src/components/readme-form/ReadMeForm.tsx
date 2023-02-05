@@ -32,9 +32,7 @@ const ReadMeForm: React.FC = ({}) => {
         initialValues={initialState}
         validationSchema={validation}
         onSubmit={(values, { setSubmitting }) => {
-          console.log('values', values)
-          alert(JSON.stringify({ theme: 'awesome', ...values }, null, 2))
-          fetch('http://localhost:3000/api/generator', {
+          fetch('/api/generator', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -43,7 +41,6 @@ const ReadMeForm: React.FC = ({}) => {
           })
             .then((response) => response.blob())
             .then((responseBlob) => {
-              console.log('response', responseBlob)
               setSubmitting(false)
               //const buffer = Buffer.from(response.body)
               const blob = new Blob([responseBlob])
