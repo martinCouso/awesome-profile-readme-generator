@@ -1,5 +1,4 @@
 import { NextApiResponse, NextApiRequest } from 'next'
-import Demo from '../../demo'
 import { renderToString } from 'react-dom/server'
 import React from 'react'
 import { ServerStyleSheet, ThemeProvider } from 'styled-components'
@@ -11,6 +10,7 @@ import {
   PREVIOUS_JOBS,
   SKILLS,
 } from '@/constants'
+import GeneratedReadme from '@/components/GeneratedReadme'
 
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
@@ -61,7 +61,10 @@ export default function handler(
   const html = renderToString(
     sheet.collectStyles(
       <ThemeProvider theme={theme[_req.body.theme]}>
-        <Demo theme={{ textColor: 'white' }} profileInfo={profileInfo} />
+        <GeneratedReadme
+          theme={{ textColor: 'white' }}
+          profileInfo={profileInfo}
+        />
       </ThemeProvider>
     )
   )
