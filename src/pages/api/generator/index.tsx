@@ -5,13 +5,47 @@ import React from 'react'
 import { ServerStyleSheet, ThemeProvider } from 'styled-components'
 import { theme } from '@/pages/_app'
 import { ProfileInfo } from '@/global-types'
+import {
+  FRAMEWORKS_AND_LIBS,
+  LANGUAGES,
+  PREVIOUS_JOBS,
+  SKILLS,
+} from '@/constants'
 
-export default function handler(_req: NextApiRequest, res: NextApiResponse) {
-  console.log('_req', _req.body)
+interface ExtendedNextApiRequest extends NextApiRequest {
+  body: {
+    theme: keyof typeof theme
+    description: string
+    developerType: string
+    frameworks: typeof FRAMEWORKS_AND_LIBS
+    githubUsername: string
+    languages: typeof LANGUAGES
+    linkedIn: string
+    name: string
+    previousJobs: typeof PREVIOUS_JOBS
+    skills: typeof SKILLS
+    twitter: string
+  }
+}
 
+function respondWithAttachingFile(
+  contentBytes: Buffer,
+  res: NextApiResponse,
+  filename: string,
+  filetype: string
+): void {
+  res.setHeader('Content-Type', `application/${filetype}`)
+  res.setHeader('Content-Disposition', `attachment; filename=${filename}`)
+
+  res.status(200).end(contentBytes)
+}
+
+export default function handler(
+  _req: ExtendedNextApiRequest,
+  res: NextApiResponse
+) {
   const fileName = 'profile.svg'
   const sheet = new ServerStyleSheet()
-  //const elementWithCollectedStyles = ServerStyleSheet.collectStyles(element);
   const profileInfo: ProfileInfo = {
     description: _req.body.description,
     developerType: _req.body.developerType,
@@ -34,17 +68,6 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   const styleTags = sheet.getStyleTags()
   console.log('styleTags', styleTags)
   console.log('html', html)
-  const respondWithAttachingFile = (
-    contentBytes: Buffer,
-    res: NextApiResponse,
-    filename: string,
-    filetype: string
-  ): void => {
-    res.setHeader('Content-Type', `application/${filetype}`)
-    res.setHeader('Content-Disposition', `attachment; filename=${filename}`)
-
-    res.status(200).end(contentBytes)
-  }
 
   respondWithAttachingFile(
     Buffer.from(buildSvgProfile(styleTags, html)),
@@ -52,7 +75,6 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
     fileName,
     'svg'
   )
-  //return res.status(200).json(_req.body)
 }
 
 function buildSvgProfile(styleTags: string, html: string) {

@@ -41,18 +41,18 @@ const ReadMeForm: React.FC = ({}) => {
             },
             body: JSON.stringify({ theme: 'awesome', ...values }),
           })
-            .then((response) => {
-              console.log('response', response)
+            .then((response) => response.blob())
+            .then((responseBlob) => {
+              console.log('response', responseBlob)
               setSubmitting(false)
-              const buffer = Buffer.from(response.body)
-              const blob = new Blob([buffer])
+              //const buffer = Buffer.from(response.body)
+              const blob = new Blob([responseBlob])
 
               const url = window.URL.createObjectURL(blob)
               const a = document.createElement('a')
               document.body.appendChild(a)
-              a.style = 'display: none'
               a.href = url
-              a.download = 'filename.pdf'
+              a.download = 'profile.svg'
               a.click()
               window.URL.revokeObjectURL(url)
             })
