@@ -250,6 +250,20 @@
   }
 }
 
+.title{
+  font-size: 80px;
+  color:white;
+  font-weight: bold;
+  max-width: 1200px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.accentText {
+  background: -webkit-linear-gradient(left,#a230ef, #c80257);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {

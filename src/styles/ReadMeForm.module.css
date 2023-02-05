@@ -1,0 +1,57 @@
+.formContainer{
+    flex-direction: column;
+    display: flex;
+    max-width: 1200px;
+}
+.checkboxContainer{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    grid-gap: 40px;
+    margin-bottom: 100px;
+}
+@media (max-width: 1200px) {
+    .checkboxContainer{
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+    }
+}
+@media (max-width: 960px) {
+    .checkboxContainer{
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+    }
+}
+@media (max-width: 720px) {
+    .checkboxContainer{
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+}
+@media (max-width: 600px) {
+    .checkboxContainer{
+        grid-template-columns: repeat(1, minmax(100px, 1fr));
+        justify-content: center;
+    }
+}
+.sectionTitle {
+    font-size: 50px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.firstSectionContainer{
+    width:60%;
+}
+
+@media (max-width: 1200px) {
+    .firstSectionContainer {
+        width:100%;
+    }
+}
+.sectionTitleAccent {
+    background: -webkit-linear-gradient(left, #ea86f9, #bc5ef2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.sectionTitleAccentVariation {
+    background: -webkit-linear-gradient(left, #6ef1f7, #bc5ef2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,37 @@
+.container{
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.inputText{
+    all:unset;
+    border-bottom: white;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    font-size: 22px;
+    color: white;
+    min-width: 300px;
+    flex-grow: 1;
+}
+
+.label {
+    letter-spacing: 2px;
+    font-size: 22px;
+    color: white;
+    margin-right: 20px;
+}
+
+@media (max-width: 600px) {
+    .container{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .inputText{
+        width: 100%;
+    }
+}
