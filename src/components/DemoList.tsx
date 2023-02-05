@@ -1,9 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import DemoCard from './DemoCard';
+import styled from 'styled-components'
+import DemoCard from './DemoCard'
 
 const DemoList = styled(DemoCard)`
   box-shadow: unset;
-`;
+`
 
-export default DemoList;
+export default DemoList

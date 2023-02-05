@@ -7,8 +7,6 @@ import InputTag from '@/components/TagInput'
 import { FRAMEWORKS_AND_LIBS, LANGUAGES } from '@/constants'
 import styles from '../../styles/ReadMeForm.module.css'
 
-interface ReadMeFormInterface {}
-
 const initialState = {
   name: '',
   githubUserName: '',
@@ -27,7 +25,7 @@ const initialState = {
   frameworksAndLibs: [],
 }
 
-const ReadMeForm: React.FC<ReadMeFormInterface> = ({}) => {
+const ReadMeForm: React.FC = ({}) => {
   return (
     <>
       <Formik
@@ -35,17 +33,28 @@ const ReadMeForm: React.FC<ReadMeFormInterface> = ({}) => {
         validationSchema={validation}
         onSubmit={(values, { setSubmitting }) => {
           console.log('values', values)
-          alert(JSON.stringify(values, null, 2))
+          alert(JSON.stringify({ theme: 'awesome', ...values }, null, 2))
           fetch('http://localhost:3000/api/generator', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(values),
+            body: JSON.stringify({ theme: 'awesome', ...values }),
           })
             .then((response) => {
               console.log('response', response)
               setSubmitting(false)
+              const buffer = Buffer.from(response.body)
+              const blob = new Blob([buffer])
+
+              const url = window.URL.createObjectURL(blob)
+              const a = document.createElement('a')
+              document.body.appendChild(a)
+              a.style = 'display: none'
+              a.href = url
+              a.download = 'filename.pdf'
+              a.click()
+              window.URL.revokeObjectURL(url)
             })
             .catch((err) => {
               console.log('err', err)

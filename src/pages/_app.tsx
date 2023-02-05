@@ -1,7 +1,7 @@
 import 'devicon/devicon.min.css'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { ThemeNames } from '../global-types'
 

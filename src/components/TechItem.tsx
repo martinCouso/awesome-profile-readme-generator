@@ -1,5 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const TechItem = styled.li`
   all: unset;
@@ -16,6 +15,6 @@ const TechItem = styled.li`
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   transition: all 500ms;
   padding: 10px;
-`;
+`
 
-export default TechItem;
+export default TechItem

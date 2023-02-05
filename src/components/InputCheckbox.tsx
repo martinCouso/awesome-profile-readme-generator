@@ -14,6 +14,7 @@ const InputCheckbox: React.FC<InputCheckboxInterface> = ({
   label,
   iconType,
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, meta, helpers] = useField(name)
   const { value } = meta
 

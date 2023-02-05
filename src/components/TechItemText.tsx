@@ -1,7 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-const TechItemText = styled.span`
-`;
+const TechItemText = styled.span``
 
-export default TechItemText;
+export default TechItemText

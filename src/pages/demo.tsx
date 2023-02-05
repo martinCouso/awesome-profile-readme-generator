@@ -1,12 +1,10 @@
 import React, { Key } from 'react'
-import styles from '../styles/Demo.module.css'
 import {
   FRAMEWORKS_AND_LIBS,
   LANGUAGES,
   SKILLS,
   PREVIOUS_JOBS,
 } from '@/constants'
-import { theme } from './_app'
 import { Theme, ThemeNames } from '@/global-types'
 import DemoContainer from '../components/DemoContainer'
 import DemoTitle from '../components/DemoTitle'
@@ -19,8 +17,6 @@ import GridContainer from '@/components/GridContainer'
 import DemoCard from '@/components/DemoCard'
 import DemoCardTitle from '@/components/DemoCardTitle'
 import DemoCardIcon from '@/components/DemoCardIcon'
-import DemoCardBody from '@/components/DemoCardBody'
-import DemoTag from '@/components/DemoTag'
 import DemoList from '@/components/DemoList'
 import TechListContainer from '@/components/TechListContainer'
 import TechItem from '@/components/TechItem'
@@ -32,30 +28,34 @@ import SocialLink from '@/components/SocialLink'
 import { theme as availableThemes } from './_app'
 interface ProfileProps {
   theme: Theme
-  frameworks: typeof FRAMEWORKS_AND_LIBS
-  languages: typeof LANGUAGES
-  name: string
-  linkedIn: string
-  skills: string[]
-  previousJobs: string[]
-  githubUsername: string
-  twitter: string
-  description: string
-  developerType: string
+  profileInfo: {
+    frameworks: typeof FRAMEWORKS_AND_LIBS
+    languages: typeof LANGUAGES
+    name: string
+    linkedIn: string
+    skills: string[]
+    previousJobs: string[]
+    githubUsername: string
+    twitter: string
+    description: string
+    developerType: string
+  }
 }
 
 const Demo: React.FC<ProfileProps> = ({
   theme = availableThemes[ThemeNames.LIGHT],
-  frameworks = FRAMEWORKS_AND_LIBS,
-  languages = LANGUAGES,
-  name = 'Martin Couso',
-  linkedIn = 'cousomartin',
-  skills = SKILLS,
-  description = ' Martín Couso is a Software Engineer at Utopyk, where he leads and develops website projects, mobile applications and XR experiences. He loves evangelize about innovating technologies  and find ways to apply them in real life scenarios.',
-  previousJobs = PREVIOUS_JOBS,
-  developerType = 'Sr React Native Developer',
-  githubUsername = 'martinCouso',
-  twitter = 'martin_couso',
+  profileInfo: {
+    frameworks = FRAMEWORKS_AND_LIBS,
+    languages = LANGUAGES,
+    name = 'Martin Couso',
+    linkedIn = 'cousomartin',
+    skills = SKILLS,
+    description = ' Martín Couso is a Software Engineer at Utopyk, where he leads and develops website projects, mobile applications and XR experiences. He loves evangelize about innovating technologies  and find ways to apply them in real life scenarios.',
+    previousJobs = PREVIOUS_JOBS,
+    developerType = 'Sr React Native Developer',
+    githubUsername = 'martinCouso',
+    twitter = 'martin_couso',
+  },
 }) => {
   console.log('theme.textColor', theme)
 

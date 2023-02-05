@@ -1,10 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const DemoTag = styled.div`
   padding: 0 20px;
   border-radius: 15px;
-  background: rgb(2,0,36);
+  background: rgb(2, 0, 36);
   background: linear-gradient(90deg, #6ef1f7, #bc5ef2);
   color: black;
   font-size: 20px;
@@ -14,6 +13,6 @@ const DemoTag = styled.div`
   align-items: center;
   display: flex;
   height: 35px;
-`;
+`
 
-export default DemoTag;
+export default DemoTag
