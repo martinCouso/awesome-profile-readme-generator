@@ -19,7 +19,7 @@ const InputCheckbox: React.FC<InputCheckboxInterface> = ({
   const { value } = meta
 
   const isSelected =
-    value.filter((ele: { label: string; icon: string }) => ele.label === label)
+    value?.filter((ele: { label: string; icon: string }) => ele.label === label)
       .length > 0
   const itemStyles = isSelected
     ? `${styles.container} ${styles.selectedItem}`
@@ -35,7 +35,7 @@ const InputCheckbox: React.FC<InputCheckboxInterface> = ({
     } else {
       helpers.setValue([...value, { label, icon, iconType }])
     }
-  }, [helpers, value, label, icon, isSelected])
+  }, [isSelected, helpers, value, label, icon, iconType])
 
   return (
     <button className={itemStyles} onClick={onClick} type="button">

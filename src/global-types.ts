@@ -11,14 +11,19 @@ export type Theme = {
 }
 
 export type ProfileInfo = {
-  frameworks: typeof FRAMEWORKS_AND_LIBS
-  languages: typeof LANGUAGES
+  frameworksAndLibs?: typeof FRAMEWORKS_AND_LIBS
+  languages?: typeof LANGUAGES
   name: string
-  linkedIn: string
-  skills: string[]
-  previousJobs: string[]
+  linkedIn?: string
+  skills?: string[]
+  previousJobs?: string[]
   githubUsername: string
-  twitter: string
+  twitter?: string
   description: string
   developerType: string
+  cv?: string
+  instagram?: string
+  stackoverflow?: string
+  email?: string
+  certifications?: string[]
 }

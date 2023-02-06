@@ -4,7 +4,7 @@ export const validation = Yup.object({
   name: Yup.string()
     .max(15, 'Must be 15 characters or less')
     .required('Required'),
-  githubUserName: Yup.string()
+  githubUsername: Yup.string()
     .max(25, 'Must be 25 characters or less')
     .required('Required'),
   developerType: Yup.string()

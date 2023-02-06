@@ -17,7 +17,7 @@ interface ExtendedNextApiRequest extends NextApiRequest {
     theme: keyof typeof theme
     description: string
     developerType: string
-    frameworks: typeof FRAMEWORKS_AND_LIBS
+    frameworksAndLibs: typeof FRAMEWORKS_AND_LIBS
     githubUsername: string
     languages: typeof LANGUAGES
     linkedIn: string
@@ -47,9 +47,14 @@ export default function handler(
   const fileName = 'profile.svg'
   const sheet = new ServerStyleSheet()
   const profileInfo: ProfileInfo = {
+    certifications: [],
+    cv: '',
+    email: '',
+    instagram: '',
+    stackoverflow: '',
     description: _req.body.description,
     developerType: _req.body.developerType,
-    frameworks: _req.body.frameworks,
+    frameworksAndLibs: _req.body.frameworksAndLibs,
     githubUsername: _req.body.githubUsername,
     languages: _req.body.languages,
     linkedIn: _req.body.linkedIn,

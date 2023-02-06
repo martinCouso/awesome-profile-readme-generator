@@ -5,6 +5,13 @@ import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { ThemeNames } from '../global-types'
 
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'true') {
+  import('../mocks').then(({ setupMocks }) => {
+    void setupMocks()
+    console.log('setupMocks')
+  })
+}
+
 export const theme = {
   light: {
     textColor: 'black',

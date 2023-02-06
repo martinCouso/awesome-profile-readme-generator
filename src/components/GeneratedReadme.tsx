@@ -1,11 +1,5 @@
 import React, { Key } from 'react'
-import {
-  FRAMEWORKS_AND_LIBS,
-  LANGUAGES,
-  SKILLS,
-  PREVIOUS_JOBS,
-} from '@/constants'
-import { Theme } from '@/global-types'
+import { ProfileInfo, Theme } from '@/global-types'
 import DemoContainer from '../components/DemoContainer'
 import DemoTitle from '../components/DemoTitle'
 import AccentColoredText from '../components/AccentColoredText'
@@ -27,32 +21,21 @@ import SocialMediaContainer from '@/components/SocialMediaContainer'
 import SocialLink from '@/components/SocialLink'
 interface ProfileProps {
   theme: Theme
-  profileInfo: {
-    frameworks: typeof FRAMEWORKS_AND_LIBS
-    languages: typeof LANGUAGES
-    name: string
-    linkedIn: string
-    skills: string[]
-    previousJobs: string[]
-    githubUsername: string
-    twitter: string
-    description: string
-    developerType: string
-  }
+  profileInfo: ProfileInfo
 }
 
 const Demo: React.FC<ProfileProps> = ({
   profileInfo: {
-    frameworks = FRAMEWORKS_AND_LIBS,
-    languages = LANGUAGES,
-    name = 'Martin Couso',
-    linkedIn = 'cousomartin',
-    skills = SKILLS,
-    description = ' Martín Couso is a Software Engineer at Utopyk, where he leads and develops website projects, mobile applications and XR experiences. He loves evangelize about innovating technologies  and find ways to apply them in real life scenarios.',
-    previousJobs = PREVIOUS_JOBS,
-    developerType = 'Sr React Native Developer',
-    githubUsername = 'martinCouso',
-    twitter = 'martin_couso',
+    frameworksAndLibs,
+    languages,
+    name,
+    linkedIn,
+    skills,
+    description,
+    previousJobs,
+    developerType,
+    githubUsername,
+    twitter,
   },
 }) => {
   return (
@@ -92,9 +75,9 @@ const Demo: React.FC<ProfileProps> = ({
             My Frameworks and Libraries of choose:
           </DemoCardTitle>
           <TechListContainer>
-            {frameworks?.map((language) => (
-              <TechItem key={language.label}>
-                <TechItemText>{language.label}</TechItemText>
+            {frameworksAndLibs?.map((framework) => (
+              <TechItem key={framework.label}>
+                <TechItemText>{framework.label}</TechItemText>
               </TechItem>
             ))}
           </TechListContainer>
@@ -123,13 +106,15 @@ const Demo: React.FC<ProfileProps> = ({
             </AccentColoredText>
             My Preferred Languages
           </DemoCardTitle>
-          <TechListContainer>
-            {languages?.map((language) => (
-              <TechItem key={language.label}>
-                <TechItemText>{language.label}</TechItemText>
-              </TechItem>
-            ))}
-          </TechListContainer>
+          {languages?.length && (
+            <TechListContainer>
+              {languages.map((language) => (
+                <TechItem key={language.label}>
+                  <TechItemText>{language.label}</TechItemText>
+                </TechItem>
+              ))}
+            </TechListContainer>
+          )}
         </DemoList>
       </GridContainer>
 

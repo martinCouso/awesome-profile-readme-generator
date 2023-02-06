@@ -1,8 +1,32 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import ReadMeForm from '@/components/readme-form/ReadMeForm'
+import { ProfileInfo } from '@/global-types'
+import useFetch from '@/hooks/useFetch'
+import { API_ENDPOINTS } from '@/constants'
+import { useCallback } from 'react'
+import useDownloadFile from '@/hooks/useDownloadFile'
 
 export default function Home() {
+  //Hooks
+  const { error, loading, data, callApi } = useFetch()
+
+  useDownloadFile(data as Blob | undefined, 'profile', 'svg')
+
+  // Handlers
+  const onCollectedInfo = useCallback(
+    (info: ProfileInfo): void => {
+      callApi(API_ENDPOINTS.PROFILE_GENERATOR, true, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: info ? JSON.stringify({ theme: 'awesome', ...info }) : undefined,
+      })
+    },
+    [callApi]
+  )
+
   return (
     <>
       <Head>
@@ -13,10 +37,15 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <span className={styles.accentText}>Awesome</span> Profile{' '}
-          <span className={styles.accentText}>README</span> Generator
+          <span className={styles.accentText}>Awesome</span> Profile
+          <span className={styles.accentText}> README</span> Generator
         </h1>
-        <ReadMeForm />
+        {loading ? (
+          <p>loading</p>
+        ) : (
+          <ReadMeForm onCollectedInfo={onCollectedInfo} />
+        )}
+        {error && <p>Error while generating the profile {error.toString()}</p>}
       </main>
     </>
   )

@@ -6,65 +6,51 @@ import InputText from '@/components/InputText'
 import InputTag from '@/components/TagInput'
 import { FRAMEWORKS_AND_LIBS, LANGUAGES } from '@/constants'
 import styles from '../../styles/ReadMeForm.module.css'
+import { ProfileInfo } from '@/global-types'
 
-const initialState = {
+const initialState: ProfileInfo = {
   name: '',
-  githubUserName: '',
+  githubUsername: '',
   developerType: '',
   description: '',
-  cv: '',
-  linkedIn: '',
-  twitter: '',
-  instagram: '',
-  stackoverflow: '',
-  email: '',
-  skills: [],
-  certifications: [],
-  previousJobs: [],
-  languages: [],
-  frameworksAndLibs: [],
+  cv: undefined,
+  linkedIn: undefined,
+  twitter: undefined,
+  instagram: undefined,
+  stackoverflow: undefined,
+  email: undefined,
+  skills: undefined,
+  certifications: undefined,
+  previousJobs: undefined,
+  languages: undefined,
+  frameworksAndLibs: undefined,
 }
 
-const ReadMeForm: React.FC = ({}) => {
+interface IReadMeForm {
+  onCollectedInfo: (values: typeof initialState) => void
+}
+
+const ReadMeForm: React.FC<IReadMeForm> = ({ onCollectedInfo }) => {
   return (
     <>
       <Formik
         initialValues={initialState}
         validationSchema={validation}
         onSubmit={(values, { setSubmitting }) => {
-          fetch('/api/generator', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ theme: 'awesome', ...values }),
-          })
-            .then((response) => response.blob())
-            .then((responseBlob) => {
-              setSubmitting(false)
-              //const buffer = Buffer.from(response.body)
-              const blob = new Blob([responseBlob])
-
-              const url = window.URL.createObjectURL(blob)
-              const a = document.createElement('a')
-              document.body.appendChild(a)
-              a.href = url
-              a.download = 'profile.svg'
-              a.click()
-              window.URL.revokeObjectURL(url)
-            })
-            .catch((err) => {
-              console.log('err', err)
-              setSubmitting(false)
-            })
+          onCollectedInfo(values)
+          setSubmitting(false)
         }}
       >
-        {({ isSubmitting }) => (
-          <Form className={styles.formContainer}>
+        {({ isSubmitting, errors }) => (
+          <Form
+            className={styles.formContainer}
+            aria-label={'Profile Information'}
+          >
             <h2 className={styles.sectionTitle}>
               About{' '}
               <span className={styles.sectionTitleAccentVariation}>You</span>
             </h2>
+            <p>{JSON.stringify(errors)}</p>
             <div className={styles.firstSectionContainer}>
               <InputText
                 type="text"
@@ -73,7 +59,7 @@ const ReadMeForm: React.FC = ({}) => {
               />
               <InputText
                 type="text"
-                name="githubUserName"
+                name="githubUsername"
                 label={'My GitHub username is'}
               />
               <InputText
@@ -110,27 +96,27 @@ const ReadMeForm: React.FC = ({}) => {
               <InputText
                 type="text"
                 name="stackoverflow"
-                label={'My Stackoverflow user is: '}
+                label={'My Stackoverflow user is:'}
               />
               <InputText
                 type="email"
                 name="email"
-                label={'My email address is: '}
+                label={'My email address is:'}
               />
 
               <InputTag
                 name="skills"
-                label={'Add your skills: '}
+                label={'My skills:'}
                 placeholder={'i.e. leadership'}
               />
               <InputTag
                 name="certifications"
-                label={'My certifications: '}
+                label={'My certifications:'}
                 placeholder={'i.e. AWS Certified Developer - Associate '}
               />
               <InputTag
                 name="previousJobs"
-                label={'My past companies: '}
+                label={'My past companies:'}
                 placeholder={'i.e. Google'}
               />
             </div>
@@ -182,6 +168,7 @@ const ReadMeForm: React.FC = ({}) => {
               type="submit"
               disabled={isSubmitting}
               className="primaryButton"
+              data-testid={'submit-profile-button'}
             >
               Generate
             </button>

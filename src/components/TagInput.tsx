@@ -40,9 +40,10 @@ const InputTag: React.FC<InputTagInterface> = ({ name, label, ...props }) => {
   return (
     <div style={{ width: '100%' }}>
       <div className={styles.container}>
-        <label>{label}</label>
+        <label htmlFor={`input-${name}`}>{label}</label>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <input
+            id={`input-${name}`}
             placeholder={props.placeholder}
             type="text"
             ref={inputRef}
@@ -58,12 +59,12 @@ const InputTag: React.FC<InputTagInterface> = ({ name, label, ...props }) => {
         </div>
       </div>
       <div className={styles.tagsContainer}>
-        {value.map((tag: string) => (
+        {value?.map((tag: string) => (
           <Tag
             tag={tag}
             key={tag}
             onRemove={(selectedTag) => {
-              setValue(value.filter((el: string) => el !== selectedTag))
+              setValue(value?.filter((el: string) => el !== selectedTag))
             }}
           />
         ))}

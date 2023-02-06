@@ -60,3 +60,7 @@ export const PREVIOUS_JOBS = [
   'Equinox',
   'Utopyk',
 ]
+
+export const API_ENDPOINTS = {
+  PROFILE_GENERATOR: '/api/generator',
+}
