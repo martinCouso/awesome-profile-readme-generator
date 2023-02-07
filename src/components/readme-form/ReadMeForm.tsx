@@ -41,7 +41,7 @@ const ReadMeForm: React.FC<IReadMeForm> = ({ onCollectedInfo }) => {
           setSubmitting(false)
         }}
       >
-        {({ isSubmitting, errors }) => (
+        {({ isSubmitting }) => (
           <Form
             className={styles.formContainer}
             aria-label={'Profile Information'}
@@ -50,7 +50,6 @@ const ReadMeForm: React.FC<IReadMeForm> = ({ onCollectedInfo }) => {
               About{' '}
               <span className={styles.sectionTitleAccentVariation}>You</span>
             </h2>
-            <p>{JSON.stringify(errors)}</p>
             <div className={styles.firstSectionContainer}>
               <InputText
                 type="text"

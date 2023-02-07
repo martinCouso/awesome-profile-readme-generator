@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { ThemeNames } from '../global-types'
+import Header from '@/components/Header/Header'
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === 'true') {
   import('../mocks').then(({ setupMocks }) => {
@@ -128,6 +129,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <button onClick={toggleTheme}>Switch Theme</button>
+      <Header toggleTheme={toggleTheme} />
       <Component {...pageProps} />
     </ThemeProvider>
   )
