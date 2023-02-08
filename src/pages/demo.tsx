@@ -7,15 +7,15 @@ import {
 } from '@/constants'
 import { ThemeNames } from '@/global-types'
 
-import { theme } from './_app'
+import { themes } from './_app'
 import GeneratedReadme from '@/components/GeneratedReadme'
 
 const Demo: React.FC = () => {
   return (
     <GeneratedReadme
-      theme={theme[ThemeNames.AWESOME]}
+      theme={themes[ThemeNames.AWESOME]}
       profileInfo={{
-        frameworks: FRAMEWORKS_AND_LIBS,
+        frameworksAndLibs: FRAMEWORKS_AND_LIBS,
         languages: LANGUAGES,
         name: 'Martin Couso',
         linkedIn: 'cousomartin',

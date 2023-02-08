@@ -87,9 +87,7 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(24, 24, 24);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgb(54, 5, 92) 35%, rgb(13, 12, 12) 100%);
+
 }
 
 a {
@@ -106,7 +104,6 @@ a {
 label {
   letter-spacing: 2px;
   font-size: 22px;
-  color: white;
   margin-right: 20px;
 }
 
@@ -116,7 +113,6 @@ input{
   border-bottom-style: solid;
   border-bottom-width: 2px;
   font-size: 22px;
-  color: white;
   min-width: 300px;
 }
 

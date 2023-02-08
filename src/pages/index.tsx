@@ -6,6 +6,8 @@ import useFetch from '@/hooks/useFetch'
 import { API_ENDPOINTS } from '@/constants'
 import { useCallback } from 'react'
 import useDownloadFile from '@/hooks/useDownloadFile'
+import PageTitle from '@/components/PageTitle'
+import AccentColoredText from '@/components/AccentColoredText'
 
 export default function Home() {
   //Hooks
@@ -36,10 +38,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          <span className={styles.accentText}>Awesome</span> Profile
-          <span className={styles.accentText}> README</span> Generator
-        </h1>
+        <PageTitle>
+          <AccentColoredText>Awesome</AccentColoredText> Profile
+          <AccentColoredText className={styles.accentText}>
+            {' '}
+            README
+          </AccentColoredText>{' '}
+          Generator
+        </PageTitle>
         {loading ? (
           <p>loading</p>
         ) : (

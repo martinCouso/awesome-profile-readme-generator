@@ -7,6 +7,7 @@ import InputTag from '@/components/TagInput'
 import { FRAMEWORKS_AND_LIBS, LANGUAGES } from '@/constants'
 import styles from '../../styles/ReadMeForm.module.css'
 import { ProfileInfo } from '@/global-types'
+import AccentColoredText from '@/components/AccentColoredText'
 
 const initialState: ProfileInfo = {
   name: '',
@@ -48,7 +49,7 @@ const ReadMeForm: React.FC<IReadMeForm> = ({ onCollectedInfo }) => {
           >
             <h2 className={styles.sectionTitle}>
               About{' '}
-              <span className={styles.sectionTitleAccentVariation}>You</span>
+              <AccentColoredText variation={'secondary'}>You</AccentColoredText>
             </h2>
             <div className={styles.firstSectionContainer}>
               <InputText

@@ -35,7 +35,7 @@ const InputTag: React.FC<InputTagInterface> = ({ name, label, ...props }) => {
       setValue([...value, inputVal])
       setInputVal('')
     }
-  }, [setValue, value])
+  }, [inputVal, setValue, value])
 
   return (
     <div style={{ width: '100%' }}>
@@ -53,7 +53,7 @@ const InputTag: React.FC<InputTagInterface> = ({ name, label, ...props }) => {
               setInputVal(event.target.value)
             }}
           />
-          <button type="button" onClick={onAdd} className={styles.addButton}>
+          <button type="button" onClick={onAdd}>
             Add
           </button>
         </div>

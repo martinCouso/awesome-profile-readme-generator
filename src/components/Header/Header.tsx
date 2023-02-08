@@ -4,11 +4,12 @@ import HorizontalBox from '@/components/HorizontalBox'
 import NavItem from '@/components/NavItem'
 import Logo from '@/components/Logo'
 import useFetch from '@/hooks/useFetch'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 interface HeaderInterface {
   toggleTheme: () => void
 }
 
-const Header: React.FC<HeaderInterface> = ({}) => {
+const Header: React.FC<HeaderInterface> = ({ toggleTheme }) => {
   const { data, callApi } = useFetch<{ stargazers_count: number }>()
 
   useEffect(() => {
@@ -27,20 +28,19 @@ const Header: React.FC<HeaderInterface> = ({}) => {
     <header>
       <Nav>
         <HorizontalBox>
-          <Logo
-            data-testid={'logo'}
-            src={'/logo.png'}
-            alt={'awesome profile readme generator logo'}
-            width={40}
-            height={40}
-          />
+          <NavItem href={'/'}>
+            <Logo
+              data-testid={'logo'}
+              src={'/logo.png'}
+              alt={'awesome profile readme generator logo'}
+              width={40}
+              height={40}
+            />
+          </NavItem>
           <NavItem href={'/why-is-it-awesome'}>Why is it Awesome?</NavItem>
         </HorizontalBox>
         <HorizontalBox>
-          <label className="switch">
-            <input type="checkbox" />
-            <span className="slider round"></span>
-          </label>
+          <ThemeSwitcher toggleTheme={toggleTheme} />
           <NavItem
             href={
               'https://github.com/martinCouso/awesome-profile-readme-generator'

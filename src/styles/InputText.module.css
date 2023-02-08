@@ -10,11 +10,9 @@
 
 .inputText{
     all:unset;
-    border-bottom: white;
     border-bottom-style: solid;
     border-bottom-width: 2px;
     font-size: 22px;
-    color: white;
     min-width: 300px;
     flex-grow: 1;
 }
@@ -22,7 +20,6 @@
 .label {
     letter-spacing: 2px;
     font-size: 22px;
-    color: white;
     margin-right: 20px;
 }
 

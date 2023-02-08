@@ -28,12 +28,16 @@ const InputCheckbox: React.FC<InputCheckboxInterface> = ({
   const onClick = useCallback(() => {
     if (isSelected) {
       helpers.setValue(
-        value.filter(
+        value?.filter(
           (item: { label: string; icon: string }) => item.label !== label
         )
       )
     } else {
-      helpers.setValue([...value, { label, icon, iconType }])
+      helpers.setValue(
+        value
+          ? [...value, { label, icon, iconType }]
+          : [{ label, icon, iconType }]
+      )
     }
   }, [isSelected, helpers, value, label, icon, iconType])
 

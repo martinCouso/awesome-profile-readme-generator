@@ -1,16 +1,17 @@
 import styled from 'styled-components'
+import { appThemes } from '@/pages/_app'
 
-const AccentColoredText = styled.span`
+const AccentColoredText = styled.span<{ variation?: string }>`
   background: -webkit-linear-gradient(
     left,
-    ${(props) => props.theme.accentColorOne},
-    ${(props) => props.theme.accentColorTwo}
+    ${({ variation = 'primary' }) =>
+      variation == 'primary' ? '#a230ef' : '#6ef1f7'},
+    ${({ variation = 'primary' }) =>
+      variation == 'primary' ? '#c80257' : '#bc5ef2'},
+    ${appThemes.dark.accentColorTwo}
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: ${(props) =>
-    props.theme.accentText.textShadow === 'unset' ? 'transparent' : 'unset'};
-  text-shadow: ${(props) => props.theme.accentText.textShadow};
-  letter-spacing: ${(props) => props.theme.accentText.letterSpacing};
+  -webkit-text-fill-color: transparent;
   text-transform: ${(props) => props.theme.accentText.textTransform};
 `
 

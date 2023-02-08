@@ -32,7 +32,6 @@
     all:unset;
     cursor: pointer;
     background-color: #3a3aff;
-    color: white;
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: 0 5px 25px 5px rgb(109, 15, 213);
     border-radius: 10px;
