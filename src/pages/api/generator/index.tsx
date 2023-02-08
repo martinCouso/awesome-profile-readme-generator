@@ -2,7 +2,7 @@ import { NextApiResponse, NextApiRequest } from 'next'
 import { renderToString } from 'react-dom/server'
 import React from 'react'
 import { ServerStyleSheet, ThemeProvider } from 'styled-components'
-import { theme } from '@/pages/_app'
+import { themes } from '@/pages/_app'
 import { ProfileInfo } from '@/global-types'
 import {
   FRAMEWORKS_AND_LIBS,
@@ -14,7 +14,7 @@ import GeneratedReadme from '@/components/GeneratedReadme'
 
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
-    theme: keyof typeof theme
+    theme: keyof typeof themes
     description: string
     developerType: string
     frameworksAndLibs: typeof FRAMEWORKS_AND_LIBS
@@ -65,7 +65,7 @@ export default function handler(
   }
   const html = renderToString(
     sheet.collectStyles(
-      <ThemeProvider theme={theme[_req.body.theme]}>
+      <ThemeProvider theme={themes[_req.body.theme]}>
         <GeneratedReadme
           theme={{ textColor: 'white' }}
           profileInfo={profileInfo}

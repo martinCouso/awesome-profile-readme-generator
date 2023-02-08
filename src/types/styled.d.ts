@@ -14,8 +14,10 @@ declare module 'styled-components' {
     backgroundColor: string
     variation: string
     title: {
-      fontFamily: string
-      fontSize: string
+      fontFamily?: string
+      fontSize?: string
+      letterSpacing?: string
+      textTransform?: string
     }
     description: {
       textColor: string

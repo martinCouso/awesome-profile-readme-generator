@@ -42,6 +42,7 @@ export const themes = {
       textTransform: 'unset',
       textShadow: 'unset',
       letterSpacing: '0.15em',
+      titleFontSize: '60px',
     },
     list: {
       backgroundColor: 'transparent',
@@ -49,6 +50,10 @@ export const themes = {
       textColor: 'white',
       boxShadow: '0 5px 25px 5px rgb(109, 15, 213)',
     },
+    button: {
+      backgroundColor: '58,58,255',
+    },
+    variation: 'test',
   },
   light: {
     id: 'theme-light',
@@ -84,6 +89,10 @@ export const themes = {
       textColor: 'black',
       boxShadow: 'unset',
     },
+    button: {
+      backgroundColor: '58,58,255',
+    },
+    variation: 'test',
   },
   dark: {
     id: 'dark-theme',
@@ -116,6 +125,10 @@ export const themes = {
       textColor: 'white',
       boxShadow: 'unset',
     },
+    button: {
+      backgroundColor: '58,58,255',
+    },
+    variation: 'test',
   },
 }
 
